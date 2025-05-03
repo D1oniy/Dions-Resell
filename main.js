@@ -844,3 +844,50 @@ if (form) {
     }
   });
 }
+function setupNewProductForm() {
+  const btn = document.getElementById("toggleProductBtn");
+  const form = document.getElementById("newProductForm");
+  if (!btn || !form) return;
+
+  let open = false;
+
+  // Toggle form visibility
+  btn.addEventListener("click", () => {
+    open = !open;
+    form.classList.toggle("open", open);
+    btn.textContent = open ? "Schließen" : "Neues Produkt hinzufügen";
+  });
+
+  // Remove any existing event listener before adding a new one
+  form.removeEventListener("submit", handleFormSubmit);
+  form.addEventListener("submit", handleFormSubmit);
+}
+
+function handleFormSubmit(e) {
+  e.preventDefault();
+
+  const fileI = document.getElementById("imageFile");
+  const name = document.getElementById("productName").value.trim();
+  const desc = document.getElementById("productDesc").value.trim();
+  const price = parseFloat(document.getElementById("productPrice").value);
+  const qty = parseInt(document.getElementById("productQuantity").value) || 1;
+
+  if (!fileI.files[0] || !name || !price || !qty) {
+    alert("Bitte alle Felder ausfüllen!");
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = evt => {
+    const imgD = evt.target.result;
+    const arr = getUserProducts();
+    const id = Date.now();
+    arr.push({ id, category: window.currentCategory, imageUrl: imgD, name, desc, price, qty });
+    setUserProducts(arr);
+    renderProducts();
+    document.getElementById("newProductForm").reset();
+    document.getElementById("newProductForm").classList.remove("open");
+    document.getElementById("toggleProductBtn").textContent = "Neues Produkt hinzufügen";
+  };
+  reader.readAsDataURL(fileI.files[0]);
+}
