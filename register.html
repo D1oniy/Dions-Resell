@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Dion's Laden - Registrieren</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="centered-full">
+  <div id="topButtons">
+    <button onclick="goBack()">Zurück</button>
+    <button onclick="goHome()">Startseite</button>
+  </div>
+  <div class="register-container">
+    <h2>Registrieren</h2>
+    <form id="registerForm">
+      <input type="email" id="regEmail" placeholder="E-Mail" required>
+      <input type="password" id="regPassword" placeholder="Passwort" required>
+      <button type="submit" class="btn">Registrieren</button>
+      <button type="button" class="btn" onclick="goLogin()">Zum Login</button>
+    </form>
+  </div>
+  <script src="main.js"></script>
+  <script>
+    // Hook up the register form
+    handleRegisterFormSubmit("registerForm");
+  </script>
+</body>
+</html>

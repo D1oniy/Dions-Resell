@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Dion's Laden - Home</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="index-body">
+  <!-- Login Button -->
+  <div id="loginButton">
+  </div>
+
+  <!-- Main Heading -->
+  <h1>Dion's Resell</h1>
+
+  <!-- Main Navigation Buttons -->
+  <div class="main-buttons">
+    <button id="produkteBtn">Produkte</button>
+    <button id="infoBtn">Info</button>
+    <button id="kontaktBtn">Kontakt</button>
+  </div>
+
+  <!-- Hidden Categories Container -->
+  <div id="categoriesContainer" class="categories-container">
+    <ul>
+      <li><a href="bekleidung.html">Bekleidung</a></li>
+      <li><a href="zubehoer.html">Zubehör</a></li>
+      <li><a href="elektronik.html">Elektronik</a></li>
+      <li><a href="sport.html">Sport & Freizeit</a></li>
+      <li><a href="haushalt.html">Haushalt</a></li>
+      <li><a href="anderes.html">Anderes</a></li>
+    </ul>
+  </div>
+
+  <script src="main.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const produkteBtn = document.getElementById("produkteBtn");
+      const infoBtn = document.getElementById("infoBtn");
+      const kontaktBtn = document.getElementById("kontaktBtn");
+      const categoriesContainer = document.getElementById("categoriesContainer");
+
+      produkteBtn.addEventListener("click", () => {
+        categoriesContainer.classList.toggle("expanded");
+      });
+
+      infoBtn.addEventListener("click", () => {
+        window.location.href = "info.html";
+      });
+
+      kontaktBtn.addEventListener("click", () => {
+        window.location.href = "kontakt.html";
+      });
+    });
+  </script>
+</body>
+</html>
+<div id="topButtons">
+  <button onclick="goBack()">Zurück</button>
+  <button onclick="goToLogin()">Login</button>
+</div>

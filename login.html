@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Login</title>
+  <style>
+    :root {
+      --color-bg:          #1F1F23;
+      --color-card:        #2b2b2b;
+      --color-input:       #3b3b3b;
+      --color-teal:        #17DDD4;
+      --color-text:        #FFFFFF;
+      --color-placeholder: #BBB;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: var(--color-bg);
+      color: var(--color-text);
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative; /* wichtig, damit fixed-Button relativ zum Viewport arbeitet */
+    }
+
+    /* ───────────────────────────────────────────────────────────── */
+    /* Zurück-Button oben rechts (gefüllt, türkiser Hintergrund)     */
+    /* ───────────────────────────────────────────────────────────── */
+    #backButton {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      width: 90px;                /* passend zu deinen anderen Buttons */
+      font-size: 0.9em;           /* selbe Schriftgröße */
+      padding: 8px 12px;          /* gleicher Innenabstand */
+      background: var(--color-teal);
+      color: var(--color-text);
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: opacity 0.2s ease-in-out;
+    }
+    #backButton:hover {
+      opacity: 0.8;
+    }
+
+    .login-card {
+      background: var(--color-card);
+      padding: 40px 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+      width: 320px;
+      text-align: center;
+    }
+    .login-card h2 {
+      margin-bottom: 30px;
+      font-size: 1.5em;
+      letter-spacing: 1px;
+    }
+    .login-card input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: none;
+      border-radius: 4px;
+      background: var(--color-input);
+      color: var(--color-text);
+      font-size: 1em;
+    }
+    .login-card input::placeholder {
+      color: var(--color-placeholder);
+    }
+    .login-card .btn {
+      width: 100%;
+      padding: 12px;
+      font-size: 1em;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-bottom: 12px;
+      transition: opacity 0.2s ease-in-out;
+    }
+    .login-card .btn-login {
+      background: var(--color-teal);
+      color: #000;
+      border: none;
+    }
+    .login-card .btn-login:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- DER WICHTIGE BUTTON -->
+  <button id="backButton" onclick="goBack()">Zurück</button>
+
+  <div class="login-card">
+    <h2>LogIn</h2>
+    <input id="loginEmail"    type="email"    placeholder="E-Mail"    required>
+    <input id="loginPassword" type="password" placeholder="Passwort" required>
+    <button class="btn btn-login" onclick="handleLoginFormSubmit('loginForm')">
+      Anmelden
+    </button>
+  </div>
+
+  <!-- Dein JavaScript -->
+  <script>
+    // Falls main.js noch nicht geladen ist, stelle goBack zur Verfügung
+    function goBack() {
+      if (history.length > 1) history.back();
+      else window.location.href = 'index.html';
+    }
+  </script>
+  <script src="main.js"></script>
+  
+</body>
+</html>

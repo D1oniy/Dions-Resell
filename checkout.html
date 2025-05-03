@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>Dions Laden – Kasse</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="checkout-page">
+  <!-- Big header at the top -->
+  <header class="checkout-header">
+    <h1>Kasse</h1>
+  </header>
+
+  <!-- Main content area: three columns -->
+  <div class="checkout-content">
+    <!-- Left Column: Warenkorb -->
+    <div class="checkout-warenkorb">
+      <h2>Warenkorb</h2>
+      <ul id="cartItems">
+        <!-- Keine statischen LI mehr! Alles per main.js befüllt -->
+      </ul>
+      <h3>Gesamt: CHF<span id="totalValue">0.00</span></h3>
+    </div>
+
+    <!-- Middle Column: Lieferadresse & Zahlungsmethode -->
+    <div class="checkout-lieferadresse">
+      <h2>Lieferadresse</h2>
+      <form id="addressForm">
+        <input type="text" placeholder="Vorname" required>
+        <input type="text" placeholder="Nachname" required>
+        <input type="text" placeholder="Straße und Hausnummer" required>
+        <input type="text" placeholder="PLZ" required>
+        <input type="text" placeholder="Ort" required>
+        <select required>
+          <option value="">Land auswählen</option>
+          <option value="DE">Deutschland</option>
+          <option value="CH">Schweiz</option>
+          <option value="AT">Österreich</option>
+        </select>
+        <input type="email" placeholder="E-Mail" required>
+        <input type="tel" placeholder="Telefon (optional)">
+      </form>
+      <h2>Zahlungsmethode</h2>
+      <div class="payment-methods">
+        <label><input type="radio" name="payment" value="karte" checked> Karte</label>
+        <label><input type="radio" name="payment" value="paypal"> PayPal</label>
+      </div>
+    </div>
+
+    <!-- Right Column: Bestellübersicht -->
+    <div class="checkout-uebersicht">
+      <h2>Bestellübersicht</h2>
+      <div class="summary-row">
+        <span>Artikel (<span id="itemCount">0</span>)</span>
+        <span id="itemsTotal">CHF 0.00</span>
+      </div>
+      <div class="summary-row">
+        <span>Versand</span>
+        <span id="shippingCost">CHF 0.00</span>
+      </div>
+      <div class="summary-row">
+        <span>MwSt. (8,1 %)</span>
+        <span id="taxAmount">CHF 0.00</span>
+      </div>
+      <hr>
+      <div class="summary-row bold">
+        <span>Gesamt</span>
+        <span id="grandTotal">CHF 0.00</span>
+      </div>
+      <div class="checkout-buttons">
+        <button class="btn" onclick="checkoutPayment()">Bezahlen</button>
+        <button class="btn" onclick="goBack()">Abbrechen</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Oben rechts -->
+  <div id="topButtons">
+    <button onclick="goBack()">Zurück</button>
+    <button onclick="goToLogin()">Login</button>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
